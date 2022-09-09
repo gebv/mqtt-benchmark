@@ -21,9 +21,6 @@ jobs:
         with:
           go-version: 1.18.x
 
-      - name: Check no source code changes
-        run: |
-          make ci-check-changes
       - name: Build Artifacts
         if: "contains(github.ref, 'refs/tags/v')"
         run: |
