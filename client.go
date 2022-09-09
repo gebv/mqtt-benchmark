@@ -13,19 +13,19 @@ import (
 
 // Client implements an MQTT client running benchmark test
 type Client struct {
-	ID          int
-	ClientID    string
-	BrokerURL   string
-	BrokerUser  string
-	BrokerPass  string
-	MsgTopic    string
-	MsgPayload  string
-	MsgSize     int
-	MsgCount    int
-	MsgQoS      byte
-	Quiet       bool
-	WaitTimeout time.Duration
-	TLSConfig   *tls.Config
+	ID              int
+	ClientID        string
+	BrokerURL       string
+	BrokerUser      string
+	BrokerPass      string
+	MsgTopic        string
+	MsgPayload      string
+	MsgSize         int
+	MsgCount        int
+	MsgQoS          byte
+	Quiet           bool
+	WaitTimeout     time.Duration
+	TLSConfig       *tls.Config
 	MessageInterval int
 }
 
@@ -91,7 +91,7 @@ func (c *Client) genMessages(ch chan *Message, done chan bool) {
 			QoS:     c.MsgQoS,
 			Payload: payload,
 		}
-		time.Sleep(time.Duration(c.MessageInterval) * time.Second)
+		time.Sleep(time.Duration(c.MessageInterval) * time.Millisecond)
 	}
 
 	done <- true
