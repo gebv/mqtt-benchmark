@@ -103,6 +103,10 @@ func (c *Client) pubMessages(in, out chan *Message, doneGen, donePub chan bool) 
 		if !c.Quiet {
 			log.Printf("CLIENT %v is connected to the broker %v\n", c.ID, c.BrokerURL)
 		}
+
+		// HACK: delay after connect
+		time.Sleep(time.Millisecond * 10)
+
 		ctr := 0
 		for {
 			select {
